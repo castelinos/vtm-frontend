@@ -5,8 +5,15 @@
 @tailwind utilities;
 
 :root {
+  overflow-y: hidden;
 }
 
 .righteous{
   font-family: "Righteous", sans-serif;
+}
+
+@layer components{
+  .main-container{
+    @apply flex min-h-screen flex-1 flex-col items-center;
+  }
 }
