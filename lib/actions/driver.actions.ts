@@ -21,8 +21,6 @@ export async function getDrivers(){
 export async function createDriverProfile({ avatar, name, contact }: DriverProps) {
     try {
         let formData = new FormData();
-
-        console.log('---->',avatar);
         
         formData.append("avatar", avatar);
         formData.append("name", name);
@@ -35,11 +33,11 @@ export async function createDriverProfile({ avatar, name, contact }: DriverProps
 
         if( !res.ok ) throw new Error('status not ok');
 
-        let data = await res.json();
-        return data;
+        let response = await res.json();
+        return response;
         
     } catch (error: any) {
         console.log('Error creating drivers profile data',error.message);
-        return [];
+        return { message: error.message };
     }
 }
