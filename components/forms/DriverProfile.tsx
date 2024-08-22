@@ -41,9 +41,9 @@ export default function DriverProfile(){
             <section className="mt-6 flex flex-col gap-6">
                 <div className='flex flex-col items-center'>
                     {
-                         avatar && <Image 
-                            className="object-fit rounded-full"
-                            src={URL.createObjectURL(avatar)} 
+                        <Image 
+                            className="object-fit rounded-full w-32 h-32"
+                            src={ avatar ? URL.createObjectURL(avatar): '/assets/default-avatar.jpg'} 
                             alt="avatar"
                             width={100}
                             height={100}
