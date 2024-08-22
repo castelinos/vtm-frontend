@@ -5,3 +5,4 @@ export const DriverValidation = z.object({
   name: z.string().min(3).max(30),
   contact: z.string().length(10), // Basic assumption for contact 
 });
+
