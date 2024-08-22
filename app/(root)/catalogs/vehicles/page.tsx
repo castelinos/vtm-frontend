@@ -1,4 +1,6 @@
 import VehicleCard from "@/components/cards/VehicleCard";
+import VehicleProfile from "@/components/forms/VehicleProfile";
+import ModalHold from "@/components/shared/ModalHold";
 import TitleBar from "@/components/shared/TitleBar";
 import { getVehicles } from "@/lib/actions/vehicle.actions";
 
@@ -10,7 +12,9 @@ export default async function Vehicles() {
     <main>
       <TitleBar title="Vehicles" />
       <section className="flex justify-end py-3 px-6">
-        <input type="submit" value="Create new" className="text-white px-3 py-1 rounded-md bg-green-600"/>
+        <ModalHold>
+          <VehicleProfile />
+        </ModalHold>
       </section>
 
       <section className="mx-4 grid grid-cols-2 gap-x-2 gap-y-4">
