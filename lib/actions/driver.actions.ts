@@ -1,7 +1,7 @@
 
 export async function getDrivers(){
     try {
-        let res = await fetch('http://localhost:4000/catalog/drivers');
+        let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/catalog/drivers/`);
         if( !res.ok ) throw new Error('status not ok');
 
         let data = await res.json();
