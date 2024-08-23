@@ -12,6 +12,7 @@ import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 export default function VehicleProfile(){
 
     const [image, setImage] = useState<File>();
+    const [message, setMessage] = useState("");
 
     const {register, handleSubmit, formState:{errors}} = useForm({
         resolver: zodResolver(VehicleValidation),
@@ -47,7 +48,7 @@ export default function VehicleProfile(){
 
         if( image && image.length > 0 ) image = image[0];
 
-        await createVehicleProfile({
+        let {message} = await createVehicleProfile({
             image,
             vehicleNumber: vehicle_no,
             vehicleType: vehicle_type,
@@ -56,8 +57,8 @@ export default function VehicleProfile(){
             ownerType: owner_type,
             certPUC: cert_puc[0],
             certInsurance: cert_insurance[0],
-        })
-
+        });
+        setMessage(message);
     }
 
     return(
@@ -92,6 +93,11 @@ export default function VehicleProfile(){
                 <input type="file" {...register('cert_insurance')} />
 
                 <input type="submit" className="cursor-pointer flex-1 py-2 text-white bg-green-700 rounded-md" />
+                <section>
+                    {
+                        message && <div>{ message }</div>
+                    }
+                </section>
             </section>
         </form>
     )

@@ -11,6 +11,7 @@ import Image from 'next/image';
 export default function DriverProfile(){
 
     const [avatar, setAvatar] = useState<File>();
+    const [message, setMessage] = useState("");
 
     const {register, handleSubmit, formState:{errors}} = useForm({
         resolver: zodResolver(DriverValidation),
@@ -31,7 +32,9 @@ export default function DriverProfile(){
         let { avatar, name, contact } = values;
 
         if( avatar && avatar.length > 0 ) avatar = avatar[0];
-        await createDriverProfile({ avatar, name, contact })
+        let {message} = await createDriverProfile({ avatar, name, contact });
+
+        setMessage(message);
     }
 
     return(
@@ -54,6 +57,12 @@ export default function DriverProfile(){
                 <input type="text" placeholder="Name" {...register("name")} />
                 <input type="text" placeholder="Contact" {...register("contact")} />
                 <input type="submit" className="cursor-pointer flex-1 py-2 text-white bg-green-700 rounded-md" />
+                
+                <section>
+                    {
+                        message && <div>{ message }</div>
+                    }
+                </section>
             </section>
         </form>
     )
