@@ -8,11 +8,6 @@ import { getDrivers } from "@/lib/actions/driver.actions";
 export default async function Drivers() {
 
   let response = await getDrivers();
-  let showModal=false;
-
-  function setShowModal(value: boolean){
-    return value;
-  }
     
   return (
     <main>
@@ -25,9 +20,9 @@ export default async function Drivers() {
       <ul className="mx-4 flex flex-col gap-3">
         {
             response && ( response.data.length > 0 ) && response.data.map((driver: any, index:number)=>{
-                const { id, name, contact } = driver;
+                const { id, name, avatar, contact } = driver;
                 return(
-                  <DriverCard key={index} id={id} name={name} contact={contact} />
+                  <DriverCard key={index} avatar={avatar} id={id} name={name} contact={contact} />
                 )
             })
         }

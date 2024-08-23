@@ -2,6 +2,7 @@ import Image from "next/image";
 
 interface DriverProps{
     id: string;
+    avatar: string;
     name:string;
     contact: string;
 }
@@ -10,7 +11,7 @@ export default function DriverCard( props: DriverProps ){
     return(
         <article key={props.id} className="rounded-xl flex items-center w-full h-24 gap-4 bg-gray-100">
             <div className="flex flex-col items-start px-6 py-4">
-            <Image src="/assets/vtm-logo.svg" 
+            <Image src={props.avatar} 
                 alt="driver"
                 width={100}
                 height={100}

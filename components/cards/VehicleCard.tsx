@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 interface VehicleProps{
+    image: string;
     vehicleNumber: string;
     brandName: string,
     vehicleType: string,
@@ -10,7 +11,7 @@ export default function VehicleCard( props: VehicleProps ){
     return(
         <article key={props.vehicleNumber} className="rounded-xl flex items-center w-full h-48 gap-4 bg-gray-100">
             <div className="px-2 ml-4">
-            <Image src="/assets/maruti.jpg" 
+            <Image src={props.image} 
                 alt="driver"
                 width={100}
                 height={100}

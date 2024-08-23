@@ -20,10 +20,11 @@ export default async function Vehicles() {
       <section className="mx-4 grid grid-cols-2 gap-x-2 gap-y-4">
         {
             response && ( response.data.length > 0 ) && response.data.map((vehicle: any, index:number)=>{
-                const { vehicleNumber, brandName, vehicleType } = vehicle;
+                const { image, vehicleNumber, brandName, vehicleType } = vehicle;
                 return(
                   <VehicleCard 
                     key={index} 
+                    image={image}
                     vehicleNumber={vehicleNumber} 
                     brandName={brandName} 
                     vehicleType={vehicleType} 
