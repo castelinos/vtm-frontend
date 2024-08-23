@@ -1,10 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface VehicleProps{
     image: string;
     vehicleNumber: string;
     brandName: string,
     vehicleType: string,
+    certPUC: string,
+    certInsurance: string,
 }
 
 export default function VehicleCard( props: VehicleProps ){
@@ -19,11 +22,20 @@ export default function VehicleCard( props: VehicleProps ){
             />
             </div>
             <div className="flex flex-col justify-center">
-            <h1 className="text-[18px] font-bold righteous tracking-wider">{props?.brandName}</h1>
-            <p className="text-[14px] text-gray-500 font-semibold ">Reg No. {props?.vehicleNumber}</p>
+                <h1 className="text-[18px] font-bold righteous tracking-wider">{props?.brandName}</h1>
+                <p className="text-[14px] text-gray-500 font-semibold uppercase">Reg No. {props?.vehicleNumber}</p>
             </div>
-            <div className="h-full grow flex justify-end items-start mt-4 mr-6">
+            <div className="h-full grow flex flex-col justify-between items-end mt-4 mr-6">
                 <div className="px-6 py-2 bg-gray-600 text-white righteous">{props.vehicleType}</div>
+
+                <div className="gap-4 my-4 py-2 flex">
+                    <div>
+                        <Link rel="noopener noreferrer" target="_blank" className="hover:underline hover:text-green-500 cursor-pointer" href={props.certPUC} >View PUC</Link>
+                    </div>
+                    <div>
+                        <Link rel="noopener noreferrer" target="_blank" className="hover:underline hover:text-green-500 cursor-pointer" href={props.certInsurance} >View Insurance</Link>
+                    </div>
+                </div>
             </div>
         </article>
     )
